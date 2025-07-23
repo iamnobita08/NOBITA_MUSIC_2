@@ -21,8 +21,9 @@ async def init():
         and not config.STRING4
         and not config.STRING5
     ):
-        LOGGER(__name__).error("𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𝐍𝐨𝐭 𝐅𝐢𝐥𝐥𝐞𝐝, 𝐏𝐥𝐞𝐚𝐬𝐞 𝐅𝐢𝐥𝐥 𝐀 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦 𝐒𝐞𝐬𝐬𝐢𝐨𝐧")
+        LOGGER(__name__).error("String Session Not Filled, Please Fill A Pyrogram Session")
         exit()
+
     await sudo()
     try:
         users = await get_gbanned()
@@ -33,29 +34,34 @@ async def init():
             BANNED_USERS.add(user_id)
     except:
         pass
+
     await app.start()
     for all_module in ALL_MODULES:
-        importlib.import_module("NOBITA.plugins" + all_module)
-    LOGGER("NOBITA.plugins").info("𝐀𝐥𝐥 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 𝐋𝐨𝐚𝐝𝐞𝐝 𝐁𝐚𝐛𝐲🥳...")
+        importlib.import_module("NOBITA.plugins." + all_module)
+    LOGGER("NOBITA.plugins").info("All Features Loaded Baby🥳...")
+
     await userbot.start()
     await NOBITA.start()
+
     try:
         await NOBITA.stream_call("https://te.legra.ph/file/...")
     except NoActiveGroupCall:
         LOGGER("NOBITA").error(
-            "𝗣𝗹𝗭 𝗦𝗧𝗔𝗥𝗧 𝗬𝗢𝗨𝗥 𝗟𝗢𝗚 𝗚𝗥𝗢𝗨𝗣 𝗩𝗢𝗜𝗖𝗘𝗖𝗛𝗔𝗧\𝗖𝗛𝗔𝗡𝗡𝗘𝗟\n\n𝗡𝗢𝗕𝗜𝗧𝗔 𝗕𝗢𝗧 𝗦𝗧𝗢𝗣........"
+            "PIZ START YOUR LOG GROUP VOICECHAT / CHANNEL\n\nNOBITA BOT STOP........"
         )
         exit()
-    except:
-        pass
+    except Exception as e:
+        LOGGER("NOBITA").error(f"Unexpected error during stream_call: {e}")
+
     await NOBITA.decorators()
     LOGGER("NOBITA").info(
-        "╔═════ஜ۩۞۩ஜ════╗\n  ☠︎︎𝗠𝗔𝗗𝗘 𝗕𝗬 𝗡𝗢𝗕𝗜𝗧𝗔\n╚═════ஜ۩۞۩ஜ════╝"
+        "\n╔═════ஜ۩۞۩ஜ════╗\n  ☘︎MADE BY NOBITA☘︎\n╚═════ஜ۩۞۩ஜ════╝"
     )
+
     await idle()
     await app.stop()
     await userbot.stop()
-    LOGGER("NOBITA").info("𝗦𝗧𝗢𝗣 𝗡𝗢𝗕𝗜𝗧𝗔 𝗠𝗨𝗦𝗜𝗖🎻 𝗕𝗢𝗧..")
+    LOGGER("NOBITA").info("STOP NOBITA MUSIC🎼 BOT..")
 
 
 if __name__ == "__main__":
