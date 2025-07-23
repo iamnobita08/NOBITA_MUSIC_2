@@ -12,7 +12,13 @@ from NOBITA.plugins import ALL_MODULES
 from NOBITA.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
-
+async def safe_start(bot):
+    try:
+        await bot.start()
+    except Exception as e:
+        print(f"Error while starting: {e}")
+        await asyncio.sleep(2)
+        await bot.start()
 async def init():
     if (
         not config.STRING1
@@ -33,12 +39,12 @@ async def init():
             BANNED_USERS.add(user_id)
     except:
         pass
-    await app.start()
+    await safe.start(app)
     for all_module in ALL_MODULES:
         importlib.import_module("NOBITA.plugins" + all_module)
     LOGGER("NOBITA.plugins").info("𝐀𝐥𝐥 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 𝐋𝐨𝐚𝐝𝐞𝐝 𝐁𝐚𝐛𝐲🥳...")
-    await userbot.start()
-    await NOBITA.start()
+    await safe.start(userbot)
+    await safe.start(NOBITA)
     try:
         await NOBITA.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
