@@ -40,9 +40,11 @@ async def init():
     await userbot.start()
     await NOBITA.start()
     try:
-        await NOBITA.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
-    except NoActiveGroupCall:
-        LOGGER("NOBITA").error(
+        await NOBITA.stream_call("https://te.legra.ph/file/...")
+    except asyncio.TimeoutError:
+    print("Telegram request timed out")
+    LOGGER("NOBITA").error("❌ Timeout while trying to stream...\n"
+                           "PIZ START YOUR LOG GROUP VOICECHAT\\CHANNEL\n\n")
             "𝗣𝗹𝗭 𝗦𝗧𝗔𝗥𝗧 𝗬𝗢𝗨𝗥 𝗟𝗢𝗚 𝗚𝗥𝗢𝗨𝗣 𝗩𝗢𝗜𝗖𝗘𝗖𝗛𝗔𝗧\𝗖𝗛𝗔𝗡𝗡𝗘𝗟\n\n𝗡𝗢𝗕𝗜𝗧𝗔 𝗕𝗢𝗧 𝗦𝗧𝗢𝗣........"
         )
         exit()
