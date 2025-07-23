@@ -27,7 +27,7 @@ qrcode
 pytz
 future==0.18.3
 search_engine_parser
-py-tgcalls==0.9.7
+py-tgcalls==4.0.0
 pykeyboard
 pyshorteners
 git+https://github.com/KurimuzonAkuma/pyrogram.git
@@ -57,3 +57,4 @@ pycryptodome
 opencv-python
 pyrogram==2.0.106
 tgcrypto
+pytube
