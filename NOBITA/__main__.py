@@ -58,5 +58,5 @@ async def init():
     LOGGER("NOBITA").info("𝗦𝗧𝗢𝗣 𝗡𝗢𝗕𝗜𝗧𝗔 𝗠𝗨𝗦𝗜𝗖🎻 𝗕𝗢𝗧..")
 
 
-if name == "main":
+if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(init())
